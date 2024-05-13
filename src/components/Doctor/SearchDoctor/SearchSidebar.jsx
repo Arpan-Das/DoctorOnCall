@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Slider, Button, DatePicker, Radio } from 'antd';
 import { FaSearch, FaRedoAlt } from "react-icons/fa";
 import Search from 'antd/es/input/Search';
 import { doctorSpecialistOptions } from '../../../constant/global';
 
-const SearchSidebar = ({ setSearchTerm, setSorByGender, setSpecialist, setPriceRange, resetFilter, query }) => {
+const SearchSidebar = ({ setSearchTerm, setSorByGender, setSpecialist, setPriceRange, resetFilter, setLatitude, setLongitude, setCity, query }) => {
   const handleDateChange = (_date, _dateString) => { }
   const options = [
     {
@@ -14,11 +14,7 @@ const SearchSidebar = ({ setSearchTerm, setSorByGender, setSpecialist, setPriceR
     {
       label: 'Female',
       value: 'female',
-    },
-    {
-      label: 'Shemale',
-      value: 'shemale',
-    },
+    }
   ];
   const onSelectGender = (e) => setSorByGender(e.target.value)
 
@@ -34,6 +30,42 @@ const SearchSidebar = ({ setSearchTerm, setSorByGender, setSpecialist, setPriceR
   const onSearch = (value) => {
     setSearchTerm(value);
   }
+  let locations= [
+    {
+      "latitude":28.6139,
+      "logitude": 77.2090,
+      "placeName":"Barasat"
+    },
+    {
+      "latitude":19.0760,
+      "logitude": 72.8777,
+      "placeName":"Barrackpur"
+    },
+    {
+      "latitude":19.0760,
+      "logitude": 72.8777,
+      "placeName":"Dum Dum"
+    },
+    {
+      "latitude":22.5744,
+      "logitude": 88.3629,
+      "placeName":"Kolkata"
+    }, 
+    {
+      "latitude":22.5744,
+      "logitude": 88.3629,
+      "placeName":"Kalyani"
+    }, 
+    {
+      "latitude":19.0760,
+      "logitude": 72.8777,
+      "placeName":"New Town"
+    }    
+  ]
+  // const {location, setLocation} = useState([]);
+
+
+
   return (
     <div className="col-md-12 col-lg-4 col-xl-3">
 
@@ -41,6 +73,31 @@ const SearchSidebar = ({ setSearchTerm, setSorByGender, setSpecialist, setPriceR
         <h5 className='text-center mb-3' style={{ color: '#05335c' }}>Doctor Filter</h5>
         <div className="mb-3">
           <Search placeholder="Search..." onSearch={onSearch} enterButton allowClear />
+        </div>
+        
+        <div className="mb-3">
+        <h6 style={{ color: '#05335c' }}>Location</h6>
+          <select className="form-control select"  name='gender' placeholder='Location'
+            onChange={(e) => {
+              localStorage.setItem('userLoc', e.target.value)
+              console.log(e.target)
+              // setLatitude(e.target.value.latitude)
+              // setLongitude(e.target.value.longitude)
+              setCity(e.target.value)
+              // setLocation(e.target.value)
+            }}
+          >
+              <option value={''}>Select</option>
+              {
+                locations.map((item, index) => {
+                  return (
+                    <option className='text-capitalize' latitude={`${item.latitude}`} logitude={`${item.logitude}`} placeName={`${item.placeName}`} value={`${item.placeName}`}>
+                    {item.placeName}
+                    </option>
+                  )
+                })
+              }
+          </select>
         </div>
 
         <div className='mb-3'>

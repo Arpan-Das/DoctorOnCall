@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import SearchSidebar from './SearchSidebar';
 import SearchContent from './SearchContent';
@@ -19,6 +19,9 @@ const SearchDoctor = () => {
     const [sortByGender, setSorByGender] = useState("");
     const [specialist, setSpecialist] = useState("");
     const [priceRange, setPriceRange] = useState({});
+    const [latitude, setLatitude] = useState("");
+    const [longitude, setLongitude] = useState("");
+    const [city, setCity] = useState("")
 
     query["limit"] = size;
     query["page"] = page;
@@ -27,6 +30,9 @@ const SearchDoctor = () => {
 
     sortByGender !== '' && (query["gender"] = sortByGender);
     specialist !== '' && (query["specialist"] = specialist);
+    city !== '' && (query["city"] = city);
+    latitude !== '' && (query["latitude"] = latitude);
+    longitude !== '' && (query["position"] = longitude);
 
     const priceDebounced = useDebounced({ searchQuery: priceRange, delay: 600 });
     const debounced = useDebounced({ searchQuery: searchTerm, delay: 600 })
@@ -46,6 +52,9 @@ const SearchDoctor = () => {
         setSorByGender("");
         setSpecialist("");
         setPriceRange({});
+        setCity("");
+        setLatitude("");
+        setLongitude("");
     }
 
     if (!!debounced) { query.searchTerm = debounced }
@@ -73,6 +82,10 @@ const SearchDoctor = () => {
         setSize(pageSize)
     }
 
+    useEffect(() => {
+        console.log(query)
+      }, [query]);
+
     return (
         <div>
             <Header />
@@ -86,6 +99,10 @@ const SearchDoctor = () => {
                             setSpecialist={setSpecialist}
                             setPriceRange={setPriceRange}
                             resetFilter={resetFilter}
+                            setCity={setCity}
+                            setLongitude={setLongitude}
+                            setLatitude={setLatitude}
+
                             query={query}
                         />
                         <div className="col-md-12 col-lg-8 col-xl-9">

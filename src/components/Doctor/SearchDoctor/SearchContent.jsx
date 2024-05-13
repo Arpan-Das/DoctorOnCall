@@ -19,24 +19,24 @@ const SearchContent = ({ data }) => {
                     <div className="doc-info">
                         <h5 className='mb-0'><Link to={`/doctors/profile/${data?.id}`}>Dr. {data?.firstName + ' ' + data?.lastName}</Link></h5>
                         <p className='m-0 form-text'>{data?.designation}</p>
-                        <p className="doc-department m-0"><img src={showImg} className="img-fluid" alt="Speciality" />Urology</p>
+                        <p className="doc-department m-0"><img src={showImg} className="img-fluid" alt="Speciality" />{data?.specialization}</p>
 
                         <div className='d-flex align-items-center'>
                             <div>
                                 <StarRatings
                                     rating={5}
                                     starRatedColor="#f4c150"
-                                    numberOfStars={5}
+                                    numberOfStars={2}
                                     name='rating'
                                     starDimension="15px"
                                     starSpacing="2px"
                                 />
                             </div>
-                            <div>(4)</div>
+                            <div></div>
                         </div>
 
                         <div className="clinic-details">
-                            <p className="form-text text-secondary"><FaLocationArrow /> {data?.address}, {data?.country}</p>
+                            <p className="form-text text-secondary"><FaLocationArrow /> {data?.clinicAddress}</p>
                             <ul className="clinic-gallery mt-3">
                                 <li>
                                     <img src={showImg} alt="Feature" style={{ maxWidth: "30px" }} />
