@@ -11,12 +11,14 @@ import Header from '../../Shared/Header/Header';
 import Service from '../Services/Service';
 import Gallery from '../Gallery/Gallery';
 import OurDoctors from '../OurDoctor/OurDoctors';
+import Bot from '../../ChatBot/Bot.jsx';
 
 const Home = () => {
     return (
         <>
             <Header />
             <HeroSection />
+            <Bot/>
             <InfoPage />
             <Service />
             <ClinicAndSpecialities />
