@@ -5,7 +5,7 @@
     position: fixed;
     right: 10px;
     bottom: 28px;
-    background-color: #4ba2ff;
+    background-color: #08213c;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 .bot-icon:hover{
-    background-color: #012850;
+    background-color: #0778ea;
 }
 
 .bot-model{
@@ -29,3 +29,45 @@
     z-index: 100;
 }
 
+.bot_btn{
+    background-color: rgb(0, 139, 139);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #fff;
+    position: relative;
+    margin-left: 54px;
+    text-align: center;
+    padding: 6px;
+    margin: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgb(1 57 57);
+}
+.bot_btn:hover{
+    background-color: rgb(21 169 169);
+}
+
+.btn-row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: space-around;
+    width: 200px;
+    margin: auto;
+}
+
+
+
+.react-chatbot-kit-chat-container{
+    width:350px;
+}
+
+
+.react-chatbot-kit-chat-bot-message {
+    margin-left:unset;
+}
+
+.bot_doc{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
