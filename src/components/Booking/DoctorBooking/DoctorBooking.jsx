@@ -97,7 +97,7 @@ const DoctorBooking = () => {
         <>
             <div className="booking-doc-img my-3 mb-3 rounded">
                 <Link to={`/doctors/${data?.id}`}>
-                    <img src={img} alt="" />
+                    <img src={data?.img} alt="" />
                 </Link>
                 <div className='text-start'>
                     <Link to={`/doctors/${data?.id}`} style={{ textDecoration: 'none' }}>Dr. {data?.firstName + ' ' + data?.lastName}</Link>

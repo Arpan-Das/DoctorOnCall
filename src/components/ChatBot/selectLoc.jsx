@@ -9,7 +9,7 @@ import { useGetDoctorsQuery } from "../../redux/api/doctorApi";
 
 export default function selectLoc (props){
 
-    console.log(props)
+    console.log('df',props)
     // const query = {};
     // // loc !== '' && (query["city"] = propschildren.props.state.checker);
      

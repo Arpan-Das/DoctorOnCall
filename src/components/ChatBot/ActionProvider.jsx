@@ -16,19 +16,21 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     updateState(botMessage);
   };
 
+  // appointment
   const handleAppointment = () => {
     const botMessage = createChatBotMessage('Select Doctor: ', {
         widget: "Doctors"
     });
-    updateState(botMessage, 'appointment');
+    updateState(botMessage);
   };
 
   const handleSelectDoc = (item) => {
-    console.log("lsadfjl")
+    console.log("lsadfjl:", item);
     const botMessage = createChatBotMessage(`Select Doc:${item.firstName}`);
-    updateState(botMessage,);
+    updateState(botMessage);
   }
 
+  // track appointment
   const handleTrack = () => {
     const botMessage = createChatBotMessage('Enter Track ID:');
     updateState(botMessage, 'track');    
@@ -63,14 +65,15 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
  //   ARP202404112002
 
+
+
+//  near by location
  const handleNearByLoc = () => {
     const botMessage = createChatBotMessage('Kindly Select a Location:', {
         widget: "Location"
     })
     updateState(botMessage, 'location');
- }
-
- 
+ } 
 
  const handleSelectLoc = (loc) => {
     const botMessage = createChatBotMessage(`Near By ${loc}:`)
