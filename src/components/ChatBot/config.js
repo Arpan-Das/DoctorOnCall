@@ -5,6 +5,8 @@ import Doctors from './Doctors';
 import useAuthCheck from '../../redux/hooks/useAuthCheck';
 import Location from './Location';
 import selectLoc from './selectLoc';
+import DocType from './DocType';
+import selectTime from './selectTime'
 
 
 
@@ -42,6 +44,14 @@ const config = {
     {
         widgetName: "selectLoc",
         widgetFunc: (props) => <selectLoc { ... props} />
+    },
+    {
+       widgetName: "selectDoc",
+       widgetFunc: (props) => <DocType { ... props} />
+    },
+    {
+      widgetName: "selectTime",
+      widgetFunc: (props) => <selectTime {... props} />
     }
   ]
 };

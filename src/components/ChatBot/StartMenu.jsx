@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function StartMenu(props) {
     const handleAppointment = () => {
-        props.actions.handleAppointment();
+        props.actions.handleDocType();
     }
 
     const handleTrack = () => {

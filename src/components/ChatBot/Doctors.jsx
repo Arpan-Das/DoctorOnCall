@@ -5,14 +5,15 @@ import SearchContent2 from "./SearchContent2";
 
 
 export default function Doctors(props) {
-    const { data, isLoading, isError } = useGetDoctorsQuery();
+    console.log(props)
+    const { data, isLoading, isError } = useGetDoctorsQuery({specialist: `${props.state.item}` });
     
     const doctorsData = data?.doctors;  
     const [selectDoc, setSelectDoc] = useState([]);
     
     const handleDocSelect = (item) => {
         console.log("yesdf",item)
-        props.actions.handleSelectDoc(item);
+        props.actions.handleSelectTime(item?.id);
     }
 
     // useEffect(() => {

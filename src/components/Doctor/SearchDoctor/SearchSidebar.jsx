@@ -39,13 +39,8 @@ const SearchSidebar = ({ setSearchTerm, setSorByGender, setSpecialist, setPriceR
     {
       "latitude":19.0760,
       "logitude": 72.8777,
-      "placeName":"Barrackpur"
-    },
-    {
-      "latitude":19.0760,
-      "logitude": 72.8777,
-      "placeName":"Dum Dum"
-    },
+      "placeName":"Barrackpore"
+    },    
     {
       "latitude":22.5744,
       "logitude": 88.3629,

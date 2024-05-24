@@ -16,19 +16,37 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     updateState(botMessage);
   };
 
-  // appointment
-  const handleAppointment = () => {
-    const botMessage = createChatBotMessage('Select Doctor: ', {
-        widget: "Doctors"
+  // handel doc type
+  const handleDocType = () => {
+    const botMessage = createChatBotMessage('Select Category: ', {
+        widget: "selectDoc"
     });
     updateState(botMessage);
   };
 
+  // appointment
   const handleSelectDoc = (item) => {
-    console.log("lsadfjl:", item);
-    const botMessage = createChatBotMessage(`Select Doc:${item.firstName}`);
-    updateState(botMessage);
+    console.log("Doc Type:",item)
+    const botMessage = createChatBotMessage('Select Doctor: ', {
+        widget: "Doctors"
+    });
+    updateState(botMessage, "docType", `${item}`);
+  };
+
+  const handleSelectTime = (docId) => {
+    console.log("id",docId)
+    const botMessage = createChatBotMessage('Select Time :', {
+      widget: "selectTime"
+    });
+    const item = setState.item
+    updateState(botMessage, 'track', setState.item,`${docId}`);
   }
+
+  // const handleSelectDoc = (item) => {
+  //   console.log("lsadfjl:", item);
+  //   const botMessage = createChatBotMessage(`Select Doc:${item.firstName}`);
+  //   updateState(botMessage);
+  // }
 
   // track appointment
   const handleTrack = () => {
@@ -50,6 +68,8 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     console.log(data)
     setMessage(message)
   }
+
+ 
 
   useEffect(() => {
     if (isSuccess && !isError && data?.id) {
@@ -89,11 +109,13 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
  
 
-  const updateState = (botMessage, checker = '', loc = '') => {
+  const updateState = (botMessage, checker = '', item = '', docId='') => {
     setState((prev) => ({
         ...prev,
         messages: [...prev.messages, botMessage],
-        checker
+        checker,
+        item,
+        docId
       }));
   }
 
@@ -105,13 +127,15 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
           actions: {
             handleHello,
             handleHelp,
-            handleAppointment,
+            // handleSelectType,
             handleTrack,
             handleTrackStatus,
-            handleSelectDoc,
             handleNearByLoc,
             handleSelectLoc,
-            handelDisplayLoc
+            handelDisplayLoc,
+            handleSelectDoc,
+            handleDocType,
+            handleSelectTime            
           },
         });
       })}
